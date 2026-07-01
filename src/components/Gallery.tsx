@@ -1,44 +1,66 @@
-import gallery1 from "@/assets/gallery-1.jpg";
-import gallery2 from "@/assets/gallery-2.jpg";
-import gallery3 from "@/assets/gallery-3.jpg";
-import gallery4 from "@/assets/gallery-4.jpg";
+import { motion } from "framer-motion";
+import { ImageIcon } from "lucide-react";
 
-const images = [
-  { src: gallery1, alt: "Abirami Dry Cleaners Shop Interior" },
-  { src: gallery2, alt: "Professional Ironing Service" },
-  { src: gallery3, alt: "Colorful Clean Sarees" },
-  { src: gallery4, alt: "Neatly Folded Clean Clothes" },
+const GALLERY_ITEMS = [
+  { id: 1, label: "Ironing" },
+  { id: 2, label: "Dry Cleaning" },
+  { id: 3, label: "Saree Rolling" },
+  { id: 4, label: "Garment Care" },
+  { id: 5, label: "Delivery" },
+  { id: 6, label: "Our Store" },
 ];
 
 const Gallery = () => {
   return (
-    <section id="gallery" className="py-20 bg-secondary/30">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
-            Our <span className="text-primary">Work</span>
+    <section id="gallery" className="relative bg-white py-24 sm:py-28">
+      <div className="mx-auto max-w-6xl px-5 sm:px-8 lg:px-10">
+        {/* Section heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="mx-auto max-w-2xl text-center"
+        >
+          <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-[#0B2C6B]">
+            Gallery
+          </span>
+          <h2 className="mt-5 text-3xl font-extrabold leading-tight text-[#0B2C6B] sm:text-4xl md:text-5xl">
+            Our Work
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Quality you can see, care you can trust
+          <p className="mt-4 text-base text-slate-600 sm:text-lg">
+            Quality you can see.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-          {images.map((image, index) => (
-            <div
-              key={index}
-              className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 animate-fade-in aspect-square"
-              style={{ animationDelay: `${index * 0.1}s` }}
+        {/* Image grid */}
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {GALLERY_ITEMS.map((item, idx) => (
+            <motion.div
+              key={item.id}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: "easeOut" }}
+              className="group relative aspect-[4/3] overflow-hidden rounded-3xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white shadow-md shadow-blue-900/5 transition-shadow duration-300 hover:shadow-2xl hover:shadow-blue-900/20"
             >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                <p className="text-background font-semibold p-4">{image.alt}</p>
+              {/* Placeholder content — swap this div for an <img> */}
+              <div className="flex h-full w-full items-center justify-center transition-transform duration-500 ease-out group-hover:scale-110">
+                <div className="flex flex-col items-center gap-3 text-blue-300">
+                  <ImageIcon className="h-12 w-12" strokeWidth={1.5} />
+                  <span className="text-xs font-medium uppercase tracking-widest">
+                    Image Placeholder
+                  </span>
+                </div>
               </div>
-            </div>
+
+              {/* Overlay label */}
+              <div className="pointer-events-none absolute inset-0 flex items-end bg-gradient-to-t from-[#0B2C6B]/80 via-[#0B2C6B]/0 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span className="p-5 text-sm font-semibold uppercase tracking-wide text-white">
+                  {item.label}
+                </span>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>
