@@ -4,14 +4,18 @@ const QUICK_LINKS = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "Pricing", href: "#pricing" },
   { label: "Gallery", href: "#gallery" },
   { label: "Contact", href: "#contact" },
 ];
 
 const PHONE_NUMBER = "9884338168";
 const PHONE_HREF = "tel:+919884338168";
-const ADDRESS_LINES = ["123, Main Bazaar Road,", "T. Nagar, Chennai,", "Tamil Nadu – 600017"];
+
+const ADDRESS_LINES = [
+  "41/20, Asiriyar St",
+  "MPM Street, Kakanji Colony",
+  "Vyasarpadi, Chennai - 600039",
+];
 
 const Footer = () => {
   const handleLinkClick = (
@@ -19,7 +23,9 @@ const Footer = () => {
     href: string
   ) => {
     e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .querySelector(href)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   return (
@@ -36,6 +42,7 @@ const Footer = () => {
                 Dry&nbsp;Cleaners
               </span>
             </div>
+
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-blue-100/80">
               Trusted dry cleaning, ironing, saree rolling and garment care —
               serving customers with quality and care since 1975.
@@ -47,6 +54,7 @@ const Footer = () => {
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
               Quick Links
             </h3>
+
             <ul className="mt-5 space-y-3">
               {QUICK_LINKS.map((link) => (
                 <li key={link.href}>
@@ -67,6 +75,7 @@ const Footer = () => {
             <h3 className="text-sm font-semibold uppercase tracking-[0.2em] text-blue-300">
               Get in Touch
             </h3>
+
             <div className="mt-5 space-y-4">
               <a
                 href={PHONE_HREF}
@@ -75,8 +84,10 @@ const Footer = () => {
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
                 <span>+91 {PHONE_NUMBER}</span>
               </a>
+
               <div className="flex items-start gap-3 text-sm text-blue-100/80">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+
                 <span>
                   {ADDRESS_LINES.map((line) => (
                     <span key={line} className="block">
@@ -94,7 +105,8 @@ const Footer = () => {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-6xl px-5 py-6 sm:px-8 lg:px-10">
           <p className="text-center text-xs text-blue-200/70 sm:text-sm">
-            © {new Date().getFullYear()} Abirami Dry Cleaners. All rights reserved.
+            © {new Date().getFullYear()} Abirami Dry Cleaners. All rights
+            reserved.
           </p>
         </div>
       </div>
