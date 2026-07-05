@@ -15,20 +15,9 @@ const MAPS_HREF =
   "https://maps.app.goo.gl/bPtNCuiRSRgmxgeK8";
 
 const ADDRESS_LINES = [
-  "41/20, Asiriyar St,",
-  "MPM Street, Kakanji Colony,",
-  "Vyasarpadi, Chennai,",
-  "Tamil Nadu 600039",
-];
-
-const HOURS = [
-  { day: "Monday", time: "10:00 AM – 10:00 PM" },
-  { day: "Tuesday", time: "Closed" },
-  { day: "Wednesday", time: "10:00 AM – 10:00 PM" },
-  { day: "Thursday", time: "10:00 AM – 10:00 PM" },
-  { day: "Friday", time: "10:00 AM – 10:00 PM" },
-  { day: "Saturday", time: "10:00 AM – 10:00 PM" },
-  { day: "Sunday", time: "10:00 AM – 10:00 PM" },
+  "41/20, Asiriyar St",
+  "MPM Street, Kakanji Colony",
+  "Vyasarpadi, Chennai - 600039",
 ];
 
 const Contact = () => {
@@ -133,42 +122,41 @@ const Contact = () => {
 
               <div className="flex gap-4">
 
-                <div className="rounded-2xl bg-blue-50 p-3">
+                <div className="rounded-2xl bg-blue-50 p-3 h-fit">
                   <Clock className="text-[#0B2C6B]" />
                 </div>
 
-                <div className="w-full">
+                <div className="flex-1">
 
                   <p className="text-xs uppercase tracking-widest text-slate-400">
                     Opening Hours
                   </p>
 
-                  <div className="mt-3 space-y-2">
+                  <div className="mt-4 rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-6 shadow-sm">
 
-                    {HOURS.map((item) => (
+                    <div className="space-y-3 text-center">
 
-                      <div
-                        key={item.day}
-                        className="flex items-center justify-between rounded-xl px-3 py-2 transition-all duration-300 hover:bg-blue-50"
-                      >
+                      <p className="text-sm font-medium text-slate-500">
+                        Open 6 Days a Week
+                      </p>
 
-                        <span className="font-medium text-slate-700">
-                          {item.day}
-                        </span>
+                      <h3 className="text-2xl font-bold text-[#0B2C6B]">
+                        Wednesday – Monday
+                      </h3>
 
-                        <span
-                          className={`font-semibold ${
-                            item.time === "Closed"
-                              ? "rounded-full bg-red-100 px-3 py-1 text-red-600"
-                              : "text-[#0B2C6B]"
-                          }`}
-                        >
-                          {item.time}
-                        </span>
+                      <p className="text-lg font-semibold text-slate-700">
+                        10:00 AM – 10:00 PM
+                      </p>
 
-                      </div>
+                    </div>
 
-                    ))}
+                    <div className="my-5 h-px bg-blue-100"></div>
+
+                    <div className="rounded-xl bg-red-50 py-3 text-center">
+                      <span className="font-semibold text-red-600">
+                        Tuesday Holiday
+                      </span>
+                    </div>
 
                   </div>
 
@@ -180,13 +168,13 @@ const Contact = () => {
 
             {/* Buttons */}
 
-            <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
 
               <a
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 rounded-full bg-[#25D366] py-4 text-center font-semibold text-white transition-all duration-300 hover:scale-105"
+                className="flex-1 rounded-xl bg-[#25D366] py-4 text-center font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <MessageCircle className="mr-2 inline h-5 w-5" />
                 WhatsApp
@@ -196,7 +184,7 @@ const Contact = () => {
                 href={MAPS_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 rounded-full bg-[#0B2C6B] py-4 text-center font-semibold text-white transition-all duration-300 hover:scale-105"
+                className="flex-1 rounded-xl bg-[#0B2C6B] py-4 text-center font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               >
                 <Navigation className="mr-2 inline h-5 w-5" />
                 Google Maps
